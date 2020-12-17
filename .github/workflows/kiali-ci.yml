@@ -21,13 +21,15 @@ jobs:
       - name: Check out code into the Go module directory
         uses: actions/checkout@v2
 
-      - name: Install
+      - name: Swagger Install
         run: make swagger-install
+
+      - name: Lint Install
         run: make lint-install
 
       - name: Build
         run: make clean build
 
       - name: Test
-        run: make test-race
+        run: make test
 
