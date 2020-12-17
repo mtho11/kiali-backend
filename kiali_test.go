@@ -1,6 +1,5 @@
 package main
 
-// Some trivial change
 import (
 	"math/rand"
 	"testing"
