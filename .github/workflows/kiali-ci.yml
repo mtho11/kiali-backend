@@ -21,13 +21,21 @@ jobs:
       - name: Check out code into the Go module directory
         uses: actions/checkout@v2
 
-      - name: Install
+      - name: Swagger Install
         run: make swagger-install
+
+      - name: Lint Install
         run: make lint-install
+
+      - name: Gofmt
+        run: |
+          GO_FILES=$(find . -iname '*.go' -type f | grep -v /vendor/) # All the .go files, excluding vendor/
+          if [ ! -z "$(gofmt -l ${GO_FILES})" ]; then echo "These files need to be formatted:" "$(gofmt -l ${GO_FILES})";echo "Diff files:"; gofmt -d ${GO_FILES}; exit 1; fi # Gofmt Linter
+          echo "Done gofmt"
 
       - name: Build
         run: make clean build
 
       - name: Test
-        run: make test-race
+        run: make test
 
