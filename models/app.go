@@ -4,11 +4,11 @@ type AppList struct {
 	// Namespace where the apps live in
 	// required: true
 	// example: bookinfo
-	Namespace Namespace `json:"namespace"`
+Namespace Namespace `json:"namespace"`
 
 	// Applications for a given namespace
 	// required: true
-	Apps []AppListItem `json:"applications"`
+Apps []AppListItem `json:"applications"`
 }
 
 // AppListItem has the necessary information to display the console app list
